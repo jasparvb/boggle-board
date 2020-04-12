@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/app.css">
+    <title>Boggle Board</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Boggle Board</h1>
+        <p>Find as many words as you can before the time runs out!</p>
+        <div class="row my-3">
+            <div class="col">
+                <table>
+                    <tbody>
+                        {% for y in range(5) %}
+                        <tr>
+                            {% for x in range(5) %}
+                                <td>{{session['board'][y][x]}}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col timer">
+                <p>Current high score: <span class="high-score">{{session.get('high-score', 0)}}</span></p>
+                <p>Games played: <span class="games-played">{{session.get('games-played', 0)}}</span></p>
+                <p>Time left: <span class="time">60</span>s</p>
+                <p>Score: <span class="score">0</span></p>
+                <!--<a class="btn btn-warning my-3" id="play-game">Start Game</a>-->
+            </div>
+        </div>
+        <p class="message"></p>
+        <form method="POST" id="submit-form">
+            <input type="text" name="word" id="word">
+            <button class="btn btn-info" type="submit">Submit Word</button>
+        </form>
+    </div>
+    <script src="https://unpkg.com/jquery"></script>
+    <script src="https://unpkg.com/axios/dist/axios.js"></script>
+    <script src="static/app.js"></script>
+
+</body>
+</html>
