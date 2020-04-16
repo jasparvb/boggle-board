@@ -45,11 +45,11 @@ class FlaskTests(TestCase):
             self.assertEqual(resp.status_code, 200)
             self.assertEqual(resp.json['result'], 'not-on-board')
     
-    """def test_post_score(self):
+    def test_post_score(self):
         with app.test_client() as client:
             with client.session_transaction() as change_session:
                 change_session['high-score'] = 2
-            resp = client.post('/post-score', data={'score': 6})
+            resp = client.post('/post-score', json={'score': 6})
 
             self.assertEqual(resp.status_code, 200)
-            self.assertEqual(session['high-score'], 6)"""
+            self.assertEqual(session['high-score'], 6)
